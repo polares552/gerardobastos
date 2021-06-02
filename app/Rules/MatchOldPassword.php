@@ -36,6 +36,6 @@ class MatchOldPassword implements Rule
      */
     public function message()
     {
-        return 'O :attribute é compatível com a senha antiga.';
+        return 'A senha informada não corresponde com à atual.';
     }
 }

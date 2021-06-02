@@ -62,7 +62,30 @@ class User extends Authenticatable
     public function getSaldo(string $code)
     {
         try {
-            return trim(DB::table('SALDO_GBMAIS')->select('ZH_CONTEUD')->where('ZH_CLIENTE', $code)->first()->zh_conteud);
+            return trim(DB::table('SALDO_GBMAIS')->select('ZH_CONTEUD')->where('ZH_CLIENTE', $code)->where('ZH_TIPO', 'S')->first()->zh_conteud);
+        } catch (PDOException $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function getHistory(string $code, int $page = 15)
+    {
+        try {
+            return DB::table('SALDO_GBMAIS h')
+                ->distinct()
+                ->select(
+                    'h.ZH_ORDEM',
+                    DB::raw("(SELECT DISTINCT n.ZH_CONTEUD FROM SALDO_GBMAIS n WHERE n.ZH_TIPO = 'D' AND n.ZH_ORDEM = h.ZH_ORDEM) ZH_INVOICE"),
+                    DB::raw("(SELECT DISTINCT n.ZH_CONTEUD FROM SALDO_GBMAIS n WHERE n.ZH_TIPO = 'V' AND n.ZH_ORDEM = h.ZH_ORDEM) ZH_INVOICE_VALUE"),
+                    DB::raw("(SELECT DISTINCT n.ZH_CONTEUD FROM SALDO_GBMAIS n WHERE n.ZH_TIPO = 'C' AND n.ZH_ORDEM = h.ZH_ORDEM) ZH_CREDIT"),
+                    'h.ZH_DATA',
+                    'h.ZH_FILORIG'
+                )
+                ->where('h.ZH_CLIENTE', $code)
+                ->where('h.ZH_TIPO', '<>', 'S')
+                ->groupBy('h.ZH_ORDEM', 'h.ZH_DATA','h.ZH_FILORIG')
+                ->orderBy('h.ZH_ORDEM', 'asc')
+                ->paginate($page);
         } catch (PDOException $ex) {
             return $ex->getMessage();
         }

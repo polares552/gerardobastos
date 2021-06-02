@@ -76,7 +76,9 @@
                             </table>
                         </div>
                         <div class="col-12 d-flex justify-content-end">
-                            {{ $vehicles->links() }}
+                            @if (!empty($vehicles))
+                                {{ $vehicles->links() }}
+                            @endif
                         </div>
                     </div>
                 </div>

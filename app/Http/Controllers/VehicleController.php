@@ -20,8 +20,11 @@ class VehicleController extends Controller
 
     public function index()
     {
-        $veicle_obj = new Vehicle();
-        $vehicles = $veicle_obj->getVehicles(Auth::user()->code, 15);
+        $vehicles = array();
+        if (!empty(Auth::user()->code)) {
+            $veicle_obj = new Vehicle();
+            $vehicles = $veicle_obj->getVehicles(Auth::user()->code, 15);
+        }
         return view('vehicle', compact('vehicles'));
     }
 }

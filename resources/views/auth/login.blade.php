@@ -84,7 +84,7 @@
 
                             <div class="row">
                                 <div class="col-12 text-center">
-                                    <a class="btn btn-link text-secondary" href="#">
+                                    <a class="btn btn-link text-secondary" href="{{ route('password.request') }}">
                                         Esqueceu sua senha?
                                     </a>
                                 </div>
@@ -99,7 +99,7 @@
                 <p>ou</p>
                 <h2 class="text-uppercase">Não é cadastrado?</h2>
                 <p>Seja bem-vindo!<br>Para acessar preencha os campos corretamente.</p>
-                <a href="#" class="btn btn-login">Criar Cadastro</a>
+                <a href="{{ route('register') }}" class="btn btn-login">Criar Cadastro</a>
             </div>
         </div>
     </section>

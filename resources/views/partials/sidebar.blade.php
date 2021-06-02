@@ -1,6 +1,6 @@
 <div class="gb_sidebar">
     <div class="gb_navbar">
-        <a href="{{ route('home')}}" class="gb_link active">
+        <a href="{{ route('home') }}" class="gb_link active">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-home align-middle mr-2">
@@ -9,15 +9,14 @@
             </svg>
             <span>Página Inicial</span>
         </a>
-        <a href="#" class="gb_link">
+        <a href="{{ route('payment.index') }}" class="gb_link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                class="feather feather-printer align-middle mr-2">
-                <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-                <rect x="6" y="14" width="12" height="8"></rect>
+                class="feather feather-dollar-sign align-middle mr-2">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
             </svg>
-            <span>2&#186; Via de Boleto</span>
+            <span>Pagamentos</span>
         </a>
         <a href="{{ route('vehicle.index') }}" class="gb_link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -31,7 +30,7 @@
             </svg>
             <span>Meus Ve&iacute;culos</span>
         </a>
-        <a href="#" class="gb_link">
+        {{-- <a href="#" class="gb_link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="feather feather-shopping-cart align-middle mr-2">
@@ -40,7 +39,7 @@
                 <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
             </svg>
             <span>GB+ Vantagens</span>
-        </a>
+        </a> --}}
         <a href="{{ route('profile.index') }}" class="gb_link">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

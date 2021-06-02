@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Auth;
@@ -30,4 +31,5 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/password/edit', [ProfileController::class, 'editPassword'])->name('profile.password.edit');
     Route::put('/password/update', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    Route::get('/payment', [PaymentController::class, 'index'])->name('payment.index');
 });

@@ -12,25 +12,29 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-5 col-lg-5 mx-auto my-5">
-                        <form action="{{ route('profile.password.update') }}" method="post">
+                        <form action="{{ route('profile.password.update') }}" method="post" id="form_password_reset">
                             @csrf
                             @method('PUT')
+                            @include('components.alerts')
                             <div class="form-row">
                                 <div class="col-12 col-md-12 col-lg-12 form-group">
                                     <label for="user_password_old" class="form-label gb-label">Senha Atual</label>
-                                    <input type="password" class="form-control gb-input" id="user_password_old" name="user_password_old" required>
+                                    <input type="password" class="form-control gb-input" id="user_password_old"
+                                        name="user_password_old" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-12 col-md-12 col-lg-12 form-group">
                                     <label for="user_password_new" class="form-label gb-label">Nova Senha</label>
-                                    <input type="password" class="form-control gb-input" id="user_password_new" name="user_password_new" required>
+                                    <input type="password" class="form-control gb-input" id="user_password_new"
+                                        name="user_password_new" required>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-12 col-md-12 col-lg-12 form-group">
                                     <label for="user_password_confirm" class="form-label gb-label">Confirmar Senha</label>
-                                    <input type="password" class="form-control gb-input" id="user_password_confirm" name="user_password_confirm" required>
+                                    <input type="password" class="form-control gb-input" id="user_password_confirm"
+                                        name="user_password_confirm" required>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -42,5 +46,6 @@
                     </div>
                 </div>
             </div>
+        </div>
     </section>
 @endsection

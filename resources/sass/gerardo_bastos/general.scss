@@ -47,12 +47,14 @@ body {
 
     & .gb_phone {
         font-weight: bold;
+        font-size: .9rem;
     }
 
     & .gb_whatsapp {
         display: flex;
         margin-left: 1rem;
         font-weight: bold;
+        font-size: .9rem;
 
         & .gb_icon_whatsapp {
             position: relative;
@@ -285,6 +287,12 @@ body {
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .08);
 }
 
+.gb-register-wrapper {
+    background-color: #FFF;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .08);
+}
+
 .gb_banner {
     width: 100%;
     height: auto;
@@ -429,5 +437,98 @@ body {
     &:hover {
         background: #4a73b6;
         border: 1px solid #5876a7;
+    }
+}
+
+.alert {
+    &.alert-success {
+        background-color: #1bc5bd;
+        border-color: #1bc5bd;
+        color: #fff;
+    }
+
+    &.alert-danger {
+        background-color: #f64e60;
+        border-color: #f64e60;
+        color: #fff;
+    }
+
+    & svg {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+.btn-news {
+    background-color: #124287;
+    color: #FFF;
+    font-size: .8rem;
+    padding: 3px 25px;
+
+    & svg {
+        height: 15px;
+        width: 15px;
+    }
+
+    &:hover {
+        color: #FFF;
+    }
+}
+
+.gb-form-search {
+    background-color: #FFF;
+    border-radius: 50px 50px 50px 50px;
+    padding: 1px 1px 1px 10px;
+
+    .gb-search {
+        height: 27px;
+        border: none;
+
+        &:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        &::placeholder {
+            color: #0F2C5C;
+        }
+    }
+
+    .btn-search {
+        padding: 1px 10px;
+        background-color: #124287;
+        color: #FFF;
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        font-size: .9rem;
+        font-weight: 600;
+
+        & svg {
+            height: 15px;
+            width: 15px;
+        }
+
+        &:hover {
+            color: #FFF;
+        }
+    }
+}
+
+@media (max-width: 998px) {
+    .gb_content {
+        flex-direction: column;
+        padding: 0 15px;
+    }
+
+    .gb_sidebar {
+        width: 100%;
+        padding: 0;
+        margin-bottom: 15px;
+    }
+
+    .gb_content_page {
+        width: 100%;
+        height: auto;
+        padding: 1rem;
     }
 }

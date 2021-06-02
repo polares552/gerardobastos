@@ -25,9 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = new User();
-        $saldo = $user->getSaldo(Auth::user()->code);
-        $saldo = substr($saldo,0,-2) . ',' . substr($saldo, -2);
-        return view('home', compact('saldo'));
+        $saldo = number_format(0, 2, ',', '.');
+        $history = array();
+
+        if (!empty(Auth::user()->code)) {
+            $user = new User();
+            $saldo = $user->getSaldo(Auth::user()->code);
+            $saldo = number_format(floatval(substr($saldo, 0, -2) . '.' . substr($saldo, -2)), 2, ',', '.');
+
+            $history = $user->getHistory(Auth::user()->code, 15);
+        }
+        return view('home', compact('saldo', 'history'));
     }
 }

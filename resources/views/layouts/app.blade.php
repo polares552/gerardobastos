@@ -19,6 +19,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Google Captch -->
+    {!! NoCaptcha::renderJs() !!}
 </head>
 
 <body>

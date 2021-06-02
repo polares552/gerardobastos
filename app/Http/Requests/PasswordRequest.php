@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\MatchOldPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordRequest extends FormRequest
@@ -24,7 +25,7 @@ class PasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_password_old' => 'required|min:7',
+            'user_password_old' => ['required', new MatchOldPassword],
             'user_password_new' => 'required|min:7',
         ];
     }
@@ -37,10 +38,10 @@ class PasswordRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_password_old.required'    => 'Senha antiga é obrigatório.',
-            'user_password_old.min'         => 'Tamanho mínimo de :min',
-            'user_password_new.required'    => 'Nova senha é obrigatório.',
-            'user_password_new.min'         => 'Tamanho mínimo de :min'
+            'user_password_old.required'    => 'Por favor informe a senha utilizada atualmente.',
+            'user_password_old.min'         => 'O tamanho mínimo exigido para a senha é de :min caracteres.',
+            'user_password_new.required'    => 'Por favor informe um nova senha.',
+            'user_password_new.min'         => 'O tamanho mínimo exigido para a senha é de :min caracteres.'
         ];
     }
 }

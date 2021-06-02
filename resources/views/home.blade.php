@@ -43,61 +43,72 @@
                         <table class="table gb-table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Data</th>
+                                    <th>Ordem</th>
                                     <th>Nota Fiscal</th>
                                     <th>Valor da Nota</th>
                                     <th>Filial</th>
+                                    <th>Data</th>
                                     <th>Cr&eacute;dito</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>22/02/2021</td>
-                                    <td>4565434d5</td>
-                                    <td>2.565,55</td>
-                                    <td>Centro</td>
-                                    <td>23,02</td>
-                                </tr>
-                                <tr>
-                                    <td>22/02/2021</td>
-                                    <td>4565434d5</td>
-                                    <td>2.565,55</td>
-                                    <td>Centro</td>
-                                    <td>23,02</td>
-                                </tr>
-                                <tr>
-                                    <td>22/02/2021</td>
-                                    <td>4565434d5</td>
-                                    <td>2.565,55</td>
-                                    <td>Centro</td>
-                                    <td>23,02</td>
-                                </tr>
-                                <tr>
-                                    <td>22/02/2021</td>
-                                    <td>4565434d5</td>
-                                    <td>2.565,55</td>
-                                    <td>Centro</td>
-                                    <td>23,02</td>
-                                </tr>
-                                <tr>
-                                    <td>22/02/2021</td>
-                                    <td>4565434d5</td>
-                                    <td>2.565,55</td>
-                                    <td>Centro</td>
-                                    <td>23,02</td>
-                                </tr>
-                                <tr>
-                                    <td>22/02/2021</td>
-                                    <td>4565434d5</td>
-                                    <td>2.565,55</td>
-                                    <td>Centro</td>
-                                    <td>23,02</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                @forelse ($history as $h)
+                                    <tr>
+                                        <td>{{ $h->zh_ordem ?? '--' }}</td>
+                                        <td>{{ preg_replace('/\s+/', '', trim($h->zh_invoice)) ?? '--' }}</td>
+                                        <td>{{ number_format(floatval(substr(trim($h->zh_invoice_value), 0, -2) . '.' . substr(trim($h->zh_invoice_value), -2)), 2, ',', '.') ?? '--' }}
+                                        </td>
+                                        <td>
+                                            @switch(trim($h->zh_filorig))
+                                                @case('01')
+                                                    Matriz
+                                                @break
+                                                @case('F1')
+                                                    Antônio Sales
+                                                @break
+                                                @case('F2')
+                                                    Barão
+                                                @break
+                                                @case('F3')
+                                                    São Paulo
+                                                @break
+                                                @case('F4')
+                                                    Rogaciano Leite
+                                                @break
+                                                @case('F5')
+                                                    Maracanau
+                                                @break
+                                                @case('F6')
+                                                    Parangaba
+                                                @break
+                                                @case('F7')
+                                                    Messejana
+                                                @break
+                                                @case('F8')
+                                                    Rio Mar
+                                                @break
+                                                @default
+                                                    --
+                                            @endswitch
+                                        </td>
+                                        <td>{{ date('d/m/Y', strtotime(trim($h->zh_data))) ?? '--' }}</td>
+                                        <td>{{ number_format(floatval($h->zh_credit), 2, ',', '.') ?? '--' }}</td>
+                                    </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="5" class="text-center">Nenhum resultado foi encontrado!</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12 d-flex justify-content-end">
+                            @if (!empty($history))
+                                {{ $history->links() }}
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-@endsection
+        </section>
+    @endsection
